@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql
+    container_name: todo_db
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --innodb_use_native_aio=0
+    restart: always
+    env_file:
+      - ./.env
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./db_data:/var/lib/mysql:rw
+      - ./dump/db.sql:/docker-entrypoint-initdb.d/db.sql:ro
+    networks:
+      - fullstack
+
+  api:
+    build: .
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 8000
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    networks:
+      - fullstack
+
+networks:
+  fullstack:
+    driver: bridge
