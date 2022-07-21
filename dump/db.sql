@@ -1,0 +1,23 @@
+CREATE SCHEMA IF NOT EXISTS todo_db CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE TABLE IF NOT EXISTS `user` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(255) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT _user_username_uc_ UNIQUE (username)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS `todo` (
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+    `name` VARCHAR(255) NOT NULL,
+    `data` VARCHAR(255) NOT NULL,
+    `user_id` INT UNSIGNED NOT NULL,
+    `state` TINYINT UNSIGNED NOT NULL DEFAULT 0,
+    CONSTRAINT `fk_todo_user_id`
+        FOREIGN KEY (`user_id`)
+        REFERENCES `user` (`id`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB;
