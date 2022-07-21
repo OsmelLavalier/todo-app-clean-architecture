@@ -1,9 +1,8 @@
 def test_create_todo_success(client, get_user_by_username):
-    todo_owner = {"username": "Foo", "password": "Bar"}
+    todo_owner = {"username": "Foo", "password": "FooBar"}
     todo_to_create = {"name": "Test Todo", "data": "Finish homework"}
 
     response = client.post("v1/user/create", json=todo_owner)
-
     assert response.status_code == 201
 
     response2 = client.post(
