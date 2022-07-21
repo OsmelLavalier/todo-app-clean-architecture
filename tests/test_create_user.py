@@ -23,3 +23,20 @@ def test_create_user_invalid_username(client):
 
     assert response.status_code == 400
     assert response.json() == {"detail": "Username may contain invalid characters"}
+
+
+def test_create_user_not_long_password(client):
+    user = {"username": "a[].x weion201\}", "password": "foo"}
+
+    response = client.post("v1/user/create", json=user)
+
+    assert response.status_code == 422
+    assert response.json() == {
+        "detail": [
+            {
+                "loc": ["body", "password"],
+                "msg": f'Password must greater {len(user["password"])}',
+                "type": "value_error",
+            }
+        ]
+    }

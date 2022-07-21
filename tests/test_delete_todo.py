@@ -1,4 +1,4 @@
-def test_delete_todo_success(client, get_todo, delete_todo):
+def test_delete_todo_success(client, get_todo):
     todo = get_todo(todo_id=1)
 
     response = client.delete("v1/todo/delete", params={"todo_id": todo.id})

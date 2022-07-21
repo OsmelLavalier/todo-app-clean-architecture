@@ -2,6 +2,7 @@ def test_filter_by_state_success(client):
     response = client.get("v1/todo/filter", params={"state": "New"})
 
     assert response.status_code == 200
+
     assert response.json()[0]["state"] == "New"
 
 

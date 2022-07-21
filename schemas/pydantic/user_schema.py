@@ -12,9 +12,9 @@ class UserBase(BaseModel):
     @validator("password", pre=True)
     def validate_password_length(cls, v):
         if len(v) == 0:
-            return ValueError("Password can't be empty")
+            raise ValueError("Password can't be empty")
         if len(v) < 5:
-            return ValueError("Password must greater ")
+            raise ValueError(f"Password must greater {len(v)}")
         return v
 
 
