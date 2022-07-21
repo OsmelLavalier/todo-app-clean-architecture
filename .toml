@@ -1,0 +1,19 @@
+[tool.black]
+max-line-length = 79
+include = '\.pyi?$'
+--force-exclude = '''
+/(
+    \.git
+  | \.pytest_cache
+  | \.idea
+  | \__pycache__
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
