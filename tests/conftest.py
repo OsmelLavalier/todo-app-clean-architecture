@@ -17,7 +17,7 @@ from schemas.pydantic.user_schema import UserCreate
 from services.todo_service import TodoService
 from services.user_service import UserService
 
-TEST_DATABASE_URI = f"mysql://{get_env().MYSQL_ROOT_USER}:{get_env().MYSQL_ROOT_PASSWORD}@{get_env().MYSQL_HOST}:3306/test"
+TEST_DATABASE_URI = f"mysql://{get_env().MYSQL_ROOT_USER}:{get_env().MYSQL_ROOT_PASSWORD}@localhost:3307/test"
 engine = create_engine(TEST_DATABASE_URI)
 SessionTesting = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
