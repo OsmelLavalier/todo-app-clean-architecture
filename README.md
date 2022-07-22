@@ -12,7 +12,7 @@ navigate to http://127.0.0.1:8000/docs
 
 ## Tests
 
-For testing we are using pytest. The tests consist of create a fake database with same structure are original and overriding `get_db()` from `configs.base`.
+For testing we are using pytest. The tests consist of create a fake database with same structure as original and overriding `get_db()` from `configs.base`.
 
 ```shell
 docker-compose run api bash
