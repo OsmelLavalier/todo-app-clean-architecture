@@ -13,7 +13,6 @@ process = subprocess.run(
     stderr=subprocess.PIPE,
     shell=True,
 )
-print("Migrations successfully applied...")
 
 app = FastAPI(
     title="Todo Backend API",
