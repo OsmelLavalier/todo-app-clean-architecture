@@ -3,10 +3,6 @@
 > It implements a clean repository-service architecture in FastAPI.
 
 ## Installing / Getting started
-
-A quick introduction of the minimal setup you need to get a hello world up &
-running.
-
 ```shell
 git clone https://github.com/OsmelLavalier/todo-api-clean-architecture.git
 cd todo-api-clean-architecture
@@ -16,7 +12,7 @@ navigate to http://127.0.0.1:8000/docs
 
 ## Tests
 
-For testing we are using pytest. The tests consist of create a fake database with same structure are original and overriding `get_db()` from `configs.base`.
+For testing we are using pytest. The tests consist of create a fake database with same structure as original and overriding `get_db()` from `configs.base`.
 
 ```shell
 docker-compose run api bash
